@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ebenezer Church Of Glory | Thus far the Lord has helped us</title>
-    <!-- Tailwind CSS for modern responsive utility structures -->
+    <!-- Tailwind CSS for modern structural configurations -->
     <script src="https://tailwindcss.com"></script>
-    <!-- Google Fonts for Elegant and Luxury Typography -->
+    <!-- Elegant Luxury Typography -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Visual Anchor Icons -->
+    <!-- Icon Anchors -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
     <script>
@@ -40,18 +40,18 @@
         .font-luxury-title {
             font-family: 'Playfair Display', serif;
         }
-        /* Scroll Slide-up Animations */
+        /* Smooth Slide-up animations */
         .reveal {
             position: relative;
-            transform: translateY(40px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .reveal.active {
             transform: translateY(0);
             opacity: 1;
         }
-        /* High Performance SPA Engine Displays */
+        /* Page Display Visibility Matrix */
         .page-section {
             display: none;
         }
@@ -62,11 +62,11 @@
 </head>
 <body class="flex flex-col min-h-screen bg-white">
 
-    <!-- ================= NAVIGATION BAR (FIXED TOP) ================= -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-slate-100 transition-all duration-300">
+    <!-- ================= FIXED TOP NAVIGATION BAR ================= -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Branding Area -->
+                <!-- Branding Brand Signature -->
                 <div class="flex-shrink-0 flex flex-col cursor-pointer" onclick="navigateTo('home')">
                     <span class="font-luxury-title text-xl font-bold tracking-wide text-luxuryDark flex items-center gap-2">
                         <i class="fa-solid fa-cross text-primary text-lg"></i> EBENEZER
@@ -74,7 +74,7 @@
                     <span class="text-[10px] uppercase tracking-widest text-primary font-semibold -mt-1">Church Of Glory</span>
                 </div>
                 
-                <!-- Desktop Links -->
+                <!-- Desktop Navigation Menu Options -->
                 <div class="hidden md:flex space-x-8 font-medium text-sm tracking-wider uppercase">
                     <button onclick="navigateTo('home')" class="nav-link text-primary hover:text-primary transition-colors duration-200">Home</button>
                     <button onclick="navigateTo('about')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">About Us</button>
@@ -84,16 +84,16 @@
                     <button onclick="navigateTo('contact')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">Contact</button>
                 </div>
 
-                <!-- Desktop CTA Button -->
+                <!-- Desktop Action Button -->
                 <div class="hidden md:block">
-                    <button onclick="navigateTo('contact')" class="bg-primary hover:bg-blue-700 text-white text-xs font-semibold uppercase tracking-widest px-6 py-3 rounded-none shadow-md transition-all duration-300 transform hover:-translate-y-0.5">
+                    <button onclick="navigateTo('contact')" class="bg-primary hover:bg-blue-700 text-white text-xs font-semibold uppercase tracking-widest px-6 py-3 shadow-md transition-all duration-300">
                         Plan A Visit
                     </button>
                 </div>
 
-                <!-- Hamburger Mobile Menu Trigger -->
+                <!-- Responsive Mobile Menu Control Trigger -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-primary focus:outline-none" aria-label="Toggle Menu">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-primary focus:outline-none" aria-label="Toggle Navigation Tray">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -101,7 +101,7 @@
         </div>
 
         <!-- Responsive Mobile Dropdown Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute left-0 right-0 shadow-lg transition-all duration-300 max-h-screen overflow-y-auto">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute left-0 right-0 shadow-lg max-h-screen overflow-y-auto">
             <div class="px-4 pt-4 pb-6 space-y-3 font-medium tracking-wide uppercase text-sm">
                 <button onclick="navigateTo('home')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-primary bg-blue-50/50">Home</button>
                 <button onclick="navigateTo('about')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-slate-600 hover:bg-slate-50">About Us</button>
@@ -118,71 +118,72 @@
         </div>
     </nav>
 
-    <!-- ================= MAIN PLATFORM WRAPPER ================= -->
+    <!-- ================= MAIN SITE WRAPPER ================= -->
     <main class="flex-grow pt-20">
 
         <!-- ================= PAGE 1: HOME PAGE ================= -->
         <section id="page-home" class="page-section active-page">
             <!-- Full-Screen Hero Layout -->
-            <div class="relative h-[90vh] md:h-screen w-full flex items-center justify-center bg-slate-900 overflow-hidden">
-                <img src="https://picsum.photos" class="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-multiply" alt="Sanctuary Sanctuary Architecture">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/80"></div>
+            <div class="relative h-[85vh] md:h-screen w-full flex items-center justify-center bg-slate-900 overflow-hidden">
+                <img src="https://picsum.photos" class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-multiply" alt="Sanctuary Architecture Frame">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/20 to-slate-950/70"></div>
+                
                 <div class="relative max-w-5xl mx-auto px-4 text-center z-10 text-white flex flex-col items-center">
-                    <span class="text-luxuryGold font-medium tracking-widest text-xs md:text-sm uppercase mb-4 tracking-[0.3em] animated-element opacity-0 translate-y-4 transition-all duration-700">Welcome To Glory</span>
-                    <h1 class="font-luxury-title text-4xl md:text-7xl font-bold tracking-tight leading-tight max-w-4xl mb-6 animated-element opacity-0 translate-y-4 transition-all duration-700 delay-200">
+                    <span class="text-luxuryGold font-medium tracking-widest text-xs md:text-sm uppercase mb-4 tracking-[0.25em] animated-element">Welcome To Glory</span>
+                    <h1 class="font-luxury-title text-4xl md:text-7xl font-bold tracking-tight leading-tight max-w-4xl mb-6 animated-element">
                         Experience Divine Transformation
                     </h1>
-                    <div class="w-20 h-[2px] bg-luxuryGold my-2 animated-element opacity-0 transition-all duration-700 delay-300"></div>
-                    <p class="italic font-serif text-slate-200 text-sm md:text-lg max-w-2xl mt-4 mb-8 tracking-wide font-light leading-relaxed animated-element opacity-0 translate-y-4 transition-all duration-700 delay-400">
+                    <div class="w-16 h-[2px] bg-luxuryGold my-2 animated-element"></div>
+                    <p class="italic font-serif text-slate-200 text-sm md:text-lg max-w-2xl mt-4 mb-8 tracking-wide font-light leading-relaxed animated-element">
                         "1st Samuel 7:12... he named it EBENEZER saying 'Thus far the Lord has helped us'"
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center animated-element opacity-0 translate-y-4 transition-all duration-700 delay-500 w-full sm:w-auto">
-                        <button onclick="navigateTo('sermons')" class="bg-primary hover:bg-blue-700 text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 shadow-lg transition-all duration-300">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animated-element w-full sm:w-auto">
+                        <button onclick="navigateTo('sermons')" class="bg-primary hover:bg-blue-700 text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 shadow-lg transition-colors">
                             Watch Latest Sermons
                         </button>
-                        <button onclick="navigateTo('ministries')" class="bg-transparent hover:bg-white hover:text-luxuryDark text-white border border-white/60 font-semibold text-xs uppercase tracking-widest px-8 py-4 transition-all duration-300">
+                        <button onclick="navigateTo('ministries')" class="bg-transparent hover:bg-white hover:text-luxuryDark text-white border border-white/60 font-semibold text-xs uppercase tracking-widest px-8 py-4 transition-colors">
                             Explore Ministries
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Welcome Callout Statement -->
+            
             <div class="py-20 bg-slate-50 border-b border-slate-100">
                 <div class="max-w-4xl mx-auto px-4 text-center reveal">
-                    <i class="fa-solid fa-quote-left text-primary/20 text-5xl mb-4 block"></i>
+                    <i class="fa-solid fa-quote-left text-primary/10 text-5xl mb-4 block"></i>
                     <h2 class="font-luxury-title text-2xl md:text-4xl text-luxuryDark font-medium leading-relaxed">
-                      We are a vibrant faith community anchored in Christ, celebrating the profound journey of grace, truth, and spiritual empowerment.
+                        We are a vibrant faith community anchored in Christ, celebrating the profound journey of grace, truth, and spiritual empowerment.
+                    </h2>
+                </div>
+            </div>
 
-
-Whether you are beginning your spiritual inquiry or looking for a deeper connection with God, there is a dedicated space waiting for you here at Ebenezer.
-
-
-
-
-Our Core History
-Learn about the strategic baseline, principles, and visionary pastoral direction guiding Ebenezer Church.
+            <!-- Features Cards Matrix -->
+            <div class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    Our Foundation
+Learn about the historical baseline, foundational values, and visual scriptural markers guiding Ebenezer Church.
 Read Chronicle →
 
 
-Four Strategic Pillars
-Explore our active operative departments: Asaph, ELA, Rattles of Shiloh, and Rebecca Ministries.
+Pillar Departments
+Discover your area of assignment across our designated service platforms: Asaph, ELA, Shiloh, and Rebecca.
 Explore Groups →
 
 
-Community Timeline
-Plan ahead for physical assembly programs, local outreach calendars, and global conferences.
+Community Gatherings
+Plan ahead for physical communion assemblies, municipal food outreach schedules, and corporate meetings.
 View Events →
 
 
 
 About Our House
-Our Foundation, Leadership, and Destiny
+Our Foundation, Principles, and Vision
 
 Our Historic Origin
 "Thus Far The Lord Has Helped Us"
 
-Ebenezer Church Of Glory was founded upon the unshakeable premise found in 1st Samuel 7:12. Like the stone set up by Samuel to commemorate God's protective intervention, our sanctuary serves as a monument of divine faithfulness.
+Ebenezer Church Of Glory was founded upon the unshakeable promise found in 1st Samuel 7:12. Like the stone set up by Samuel to commemorate God's protective intervention, our sanctuary serves as a monument of divine faithfulness.
 
 
 Over the decades, our communion has transformed from a small prayer meeting into a multi-generational spiritual center. We emphasize continuous biblical literacy, robust theological exploration, and genuine loving-kindness.
@@ -194,31 +195,12 @@ Over the decades, our communion has transformed from a small prayer meeting into
 
 
 
-25+
-Years of Grace & Service
-
-
-Radical Love
-Embracing each individual precisely as they are, modeling Christ's absolute blueprint of redemption.
-
-
-Scriptural Truth
-Upholding timeless scriptural principles with uncompromised accuracy, absolute clarity, and conviction.
-
-
-True Fellowship
-Cultivating micro-groups where accountability, transparent sharing, and genuine support flourish.
-
-
-Stewardship
-Leveraging our strategic financial resources, specialized talents, and time to dynamically heal our city.
-
 
 
 Pillars of Glory & Service
-Strategic execution fields within our Sanctuary operational matrices
+Active deployment paths within our sanctuary operational matrices
 
- Sanctuary Worship & Liturgical Expressions
+ Worship & Liturgical Expressions
 
 Musical Architecture
 Asaph Ministry
@@ -240,7 +222,7 @@ Join Shiloh Team
 
 
 
- Evangelical Impact & House Hospitality
+ Impact & Hospitality Operations
 
 Door-to-Door Commission
 ELA Ministry
@@ -262,61 +244,24 @@ Volunteer Protocol Sign-up
 
 
 
+
+
 The Spoken Word
-Stream and study our comprehensive theological catalog
+Stream and study our comprehensive message catalog
 
 
 
 
-Latest Release
+Featured Release
 
 
 Series: Walking in Sovereignty
 Establishing The Ebenezer Altars
 
-In this seminal message, discover how identifying God's structural markers in your past shifts the momentum of your future breakthroughs. Unpack historical validation maps securely.
+In this foundational message, discover how identifying God's structural markers in your past shifts the momentum of your future breakthroughs.
 
 
 Nov 1, 2026
-Pastor Marcus Vance
-
-
-Recent Archive Releases
-
-
-
-Grace Foundations
-The Audacity of Mercy
-Unpacking the radical elements of the Prodigal Son's restoration sequence.
-
-
-Oct 25, 2026
-
-
-
-
-
-Prophetic Edge
-Strategic Silence In Warfare
-Analyzing Joshua’s structured silent perimeter marches surrounding Jericho’s walls.
-
-
-Oct 18, 2026
-
-
-
-
-
-Kingdom Stewardship
-Wealth, Wisdom, & Worship
-How authentic biblical financial principles unlock structural community liberation plans.
-
-
-Oct 11, 2026
-
-
-
-
 
 
 
@@ -336,108 +281,65 @@ A structured strategic gathering tailored to equip modern men with leadership va
 
 
 
-09:00 AM - 03:00 PM
-
 Secure Seat
-
-
-26
-Nov
-
-
-Community Benevolence Drive
-Thanksgiving Banquet Outreach
-
-Serving warm catered meals, essential grocery parcels, and sharing love with underserved families across downtown regions. Volunteers assemble early.
-
-
-
-
-11:30 AM - 04:00 PM
-
-Volunteer
-
 
 
 
 
 Connect With Us
-Reach out for prayers, counseling, or structural geographical data
+Reach out for prayers, counseling, or structural geographical maps
 
 Send Secure Message
 Our administrative leadership review incoming communiques daily.
 Full Name
 Email Address
-Phone Number
-Purpose of Contact
-General Inquiries / Info Request
-Prayer Request Confirmation
-Pastoral Counseling Appointment
-Volunteer Placement Assignment
-
-
-Your Detailed Message
-Dispatch Message 
+Message
+Dispatch Message
 
 
 Sanctuary Matrix Data
 
-
-
-Headquarters Address:
-777 Glory Pavilion Boulevard, Suite 100,
-Metropolis Area, NY 10001
-
-
-
-Central Office Link: +1 (800) 555-GLORY
-
-
-
-Administrative Mail: contact@ebenezerglory.org
-
+ 777 Glory Pavilion Boulevard, Metropolis, NY 10001
+ +1 (800) 555-GLORY
+ contact@ebenezerglory.org
 
  EBENEZER
 
 
-"1st Samuel 7:12... he named it EBENEZER saying 'Thus far the Lord has helped us'". Dedicating our collective efforts to structural community transformation.
+"1st Samuel 7:12... he named it EBENEZER saying 'Thus far the Lord has helped us'".
 
 
 
+Navigation Links
+
+Home
+About Us
+Ministries
+Sermons
+Events
 
 
-Quick Navigation
 
-Home Dashboard
-Our History & Beliefs
-Pillar Departments
-Sermon Media Archives
-Upcoming Gatherings
-
-Weekly Assemblies
+Assemblies
 
 Sunday Service: 08:00 AM & 11:00 AM
-Wednesday Midweek: 07:00 PM (Online Matrix)
-Friday Intercession: 06:00 PM (Altar Sanctuary)
+Wednesday Bible Study: 07:00 PM
 
-Stay Connected
-Subscribe to receive devotionals, bulletins, and seasonal event alerts directly.
 
+
+Newsletter
 
 
 Subscribe
 
 
 
+
 © 2026 Ebenezer Church Of Glory. All Sovereign Rights Reserved.
 
-Privacy Policy
-Terms of Use
 
 
-
-
-// --- 1. CORE SPA ROUTING CONTROLLER ---
+// SPA NAVIGATION SYSTEM ENGINE
 function navigateTo(pageId) {
 const targets = document.querySelectorAll('.page-section');
 targets.forEach(section => {
@@ -447,19 +349,14 @@ section.classList.add('active-page');
 section.classList.remove('active-page');
 }
 });
-// Smooth window resets
 window.scrollTo({ top: 0, behavior: 'smooth' });
-// Close Mobile Hamburger Drawer automatically
 document.getElementById('mobile-menu').classList.add('hidden');
-// Sync menu highlighting configurations
 updateNavigationHighlights(pageId);
-// Re-trigger scroll display checks
 setTimeout(revealElementsOnScroll, 100);
 }
 function updateNavigationHighlights(activePage) {
 const indexMap = { 'home': 0, 'about': 1, 'ministries': 2, 'sermons': 3, 'events': 4, 'contact': 5 };
 const activeIndex = indexMap[activePage];
-// Desktop Updates
 const desktopLinks = document.querySelectorAll('.nav-link');
 desktopLinks.forEach((link, idx) => {
 if(idx === activeIndex) {
@@ -470,7 +367,6 @@ link.classList.remove('text-primary');
 link.classList.add('text-slate-600');
 }
 });
-// Mobile Updates
 const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 mobileLinks.forEach((link, idx) => {
 if(idx === activeIndex) {
@@ -482,67 +378,49 @@ link.classList.add('text-slate-600', 'hover:bg-slate-50');
 }
 });
 }
-// --- 2. RESPONSIVE MOBILE MENU INTERACTION ---
+// MOBILE MENU TRIGGER
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenuContainer = document.getElementById('mobile-menu');
 mobileMenuBtn.addEventListener('click', () => {
 mobileMenuContainer.classList.toggle('hidden');
 });
-// --- 3. FORM VALIDATION PIPELINES ---
+// CONTACT SUBMIT PIPELINE
 function handleContactSubmit(event) {
 event.preventDefault();
 const name = document.getElementById('contact-name').value.trim();
-const email = document.getElementById('contact-email').value.trim();
-const message = document.getElementById('contact-message').value.trim();
-if(!name || !email || !message) {
-alert("Please complete all mandatory secure fields.");
-return;
-}
-alert(Thank you, ${name}! Your transmission record has reached Ebenezer operational administration.);
+alert(Thank you, ${name}! Your request has reached Ebenezer operational administration successfully.);
 document.getElementById('church-contact-form').reset();
 }
-function handleNewsletterSubmit(event) {
-event.preventDefault();
-const emailInput = document.getElementById('newsletter-email');
-if(!emailInput.value) {
-alert("Please input a valid configuration email asset.");
-return;
-}
-alert(Success! Email registration verified. Welcome to our notifications matrix.);
-emailInput.value = '';
-}
-// --- 4. SCROLL INTERACTIVES: REVEAL ELEMENTS & BACK TO TOP BUTTON ---
+// SCROLL REVEAL MONITOR PIPELINE
 const backToTopBtn = document.getElementById('back-to-top-btn');
-backToTopBtn.addEventListener('click', () => {
-window.scrollTo({ top: 0, behavior: 'smooth' });
-});
 function revealElementsOnScroll() {
 const reveals = document.querySelectorAll('.reveal');
 const windowHeight = window.innerHeight;
-const revealPoint = 80;
+const revealPoint = 60;
 reveals.forEach(element => {
 const elementTop = element.getBoundingClientRect().top;
 if(elementTop < windowHeight - revealPoint) {
 element.classList.add('active');
 }
 });
-// Sticky Back-to-Top display control logic
-if (window.scrollY > 400) {
-backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+if (window.scrollY > 300) {
+backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+backToTopBtn.classList.add('opacity-100');
 } else {
-backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
-backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+backToTopBtn.classList.remove('opacity-100');
+backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
 }
 }
+backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 window.addEventListener('scroll', revealElementsOnScroll);
-// --- 5. RUN INITIAL ENGINE PROCESSES ---
 window.addEventListener('DOMContentLoaded', () => {
 const heroElements = document.querySelectorAll('.animated-element');
-heroElements.forEach(el => {
-el.classList.remove('opacity-0', 'translate-y-4');
-el.classList.add('opacity-100', 'translate-y-0');
-});
+heroElements.forEach(el => el.classList.add('active'));
 revealElementsOnScroll();
 });
 
+
+
+<FollowUp>
+Would you like to build an **interactive ministry signup form** directly inside the Ministries page next to make it easy for members to join Asaph, ELA, Rattles of Shiloh, or Rebecca?
+</FollowUp>
