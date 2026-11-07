@@ -1,411 +1,548 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alvin Muturi — Editorial Portfolio</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141413'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='32' fill='%23FAF8F5'%3EM%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #FAF8F5;
-      --surface: #FFFFFF;
-      --ink: #141413;
-      --muted: #52504C;
-      --accent: #C84B31;
-      --line: #DED9D0;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --mono: 'JetBrains Mono', monospace;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.65;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(250, 248, 245, 0.95);
-      border-bottom: 1px solid var(--line);
-      z-index: 10;
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 70px;
-    }
-    .logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; }
-    .logo span { color: var(--accent); }
-    .links { display: flex; gap: 24px; list-style: none; font-size: 0.9rem; }
-    .links a:hover { color: var(--accent); }
-    .nav-btn {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      padding: 8px 16px;
-      border: 1px solid var(--ink);
-      border-radius: 99px;
-    }
-    .nav-btn:hover { background: var(--ink); color: var(--bg); }
-
-    /* Section Headings */
-    section { padding: 72px 0; border-bottom: 1px solid var(--line); }
-    .sec-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding-bottom: 14px;
-      margin-bottom: 40px;
-      border-bottom: 2px solid var(--ink);
-    }
-    .sec-head h2 { font-family: var(--serif); font-size: 2.3rem; }
-    .eyebrow { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
-
-    /* Split Hero */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .tag {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-    }
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 6vw, 4.8rem);
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-    h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
-    .lead { font-size: 1.15rem; color: var(--muted); max-width: 46ch; margin-bottom: 30px; }
-    .btn {
-      display: inline-block;
-      background: var(--ink);
-      color: var(--bg);
-      padding: 14px 26px;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .btn:hover { background: var(--accent); }
-    .hero-box {
-      aspect-ratio: 4 / 5;
-      background: #EAE4D7;
-      border: 1px solid var(--ink);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: center;
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.75fr 1.25fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .photo-box {
-      aspect-ratio: 1 / 1;
-      background: #232220;
-      color: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      font-family: var(--serif);
-      font-style: italic;
-    }
-    blockquote {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.65rem;
-      line-height: 1.35;
-      border-left: 3px solid var(--accent);
-      padding-left: 20px;
-      margin-bottom: 20px;
-    }
-    .bio { color: var(--muted); font-size: 1.05rem; }
-
-    /* Skills */
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .card { background: var(--surface); border: 1px solid var(--line); padding: 26px; }
-    .card h3 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 18px; }
-    .bar-row { margin-bottom: 14px; }
-    .bar-label { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 600; margin-bottom: 5px; }
-    .track { height: 6px; background: #EFECE6; }
-    .fill { height: 100%; background: var(--ink); }
-    .fill.acc { background: var(--accent); }
-    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
-    .pill { font-family: var(--mono); font-size: 0.78rem; padding: 6px 10px; border: 1px solid var(--line); background: var(--bg); }
-
-    /* Projects */
-    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    .proj-thumb {
-      height: 190px;
-      background: #E8E2D5;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    .proj-body { padding: 24px; }
-    .proj-meta { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
-    .proj-body h3 { font-family: var(--serif); font-size: 1.45rem; margin-bottom: 10px; }
-    .proj-body p { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
-    .proj-link { font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid var(--ink); }
-
-    /* Education */
-    .edu-row {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 20px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .edu-date { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); }
-    .edu-row h3 { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 4px; }
-    .edu-row p { color: var(--muted); font-size: 0.95rem; }
-
-    /* Footer / Contact */
-    footer { background: var(--ink); color: var(--bg); padding: 72px 0 40px; }
-    footer .sec-head { border-bottom-color: rgba(250, 248, 245, 0.25); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-    .email-link {
-      display: inline-block;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.6rem;
-      color: #E57A64;
-      border-bottom: 1px solid #E57A64;
-      margin: 16px 0 24px;
-    }
-    .socials { display: flex; gap: 12px; flex-wrap: wrap; }
-    .socials a { font-family: var(--mono); font-size: 0.8rem; padding: 8px 14px; border: 1px solid rgba(250, 248, 245, 0.3); }
-    form { display: flex; flex-direction: column; gap: 12px; }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(250, 248, 245, 0.25);
-      color: var(--bg);
-      font-family: var(--sans);
-    }
-    button {
-      align-self: flex-start;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .copy { font-family: var(--mono); font-size: 0.75rem; color: rgba(250, 248, 245, 0.6); padding-top: 20px; border-top: 1px solid rgba(250, 248, 245, 0.2); }
-
-    @media (max-width: 820px) {
-      .hero-grid, .about-grid, .skills-grid, .proj-grid, .contact-grid, .edu-row { grid-template-columns: 1fr; }
-      .links { display: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebenezer Church Of Glory | Thus far the Lord has helped us</title>
+    <!-- Tailwind CSS for modern responsive utility structures -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Google Fonts for Elegant and Luxury Typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Visual Anchor Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        luxuryDark: '#0F172A',
+                        luxuryGold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+        .font-luxury-title {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Scroll Slide-up Animations */
+        .reveal {
+            position: relative;
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* High Performance SPA Engine Displays */
+        .page-section {
+            display: none;
+        }
+        .page-section.active-page {
+            display: block;
+        }
+    </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen bg-white">
 
-  <header id="top">
-    <div class="wrap nav">
-      <a href="#top" class="logo">Maya <span>Lin</span></a>
-      <ul class="links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="#education">Education</a></li>
-      </ul>
-      <a href="#contact" class="nav-btn">Contact</a>
-    </div>
-  </header>
+    <!-- ================= NAVIGATION BAR (FIXED TOP) ================= -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Branding Area -->
+                <div class="flex-shrink-0 flex flex-col cursor-pointer" onclick="navigateTo('home')">
+                    <span class="font-luxury-title text-xl font-bold tracking-wide text-luxuryDark flex items-center gap-2">
+                        <i class="fa-solid fa-cross text-primary text-lg"></i> EBENEZER
+                    </span>
+                    <span class="text-[10px] uppercase tracking-widest text-primary font-semibold -mt-1">Church Of Glory</span>
+                </div>
+                
+                <!-- Desktop Links -->
+                <div class="hidden md:flex space-x-8 font-medium text-sm tracking-wider uppercase">
+                    <button onclick="navigateTo('home')" class="nav-link text-primary hover:text-primary transition-colors duration-200">Home</button>
+                    <button onclick="navigateTo('about')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">About Us</button>
+                    <button onclick="navigateTo('ministries')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">Ministries</button>
+                    <button onclick="navigateTo('sermons')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">Sermons</button>
+                    <button onclick="navigateTo('events')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">Events</button>
+                    <button onclick="navigateTo('contact')" class="nav-link text-slate-600 hover:text-primary transition-colors duration-200">Contact</button>
+                </div>
 
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="tag">Portfolio Vol. 2026 &bull; Open to Opportunities</div>
-          <h1>Maya <em>Lin</em></h1>
-          <p class="lead">Product Design &amp; Human-Computer Interaction graduate crafting thoughtful digital tools, editorial web experiences, and human-centered research.</p>
-          <a href="#projects" class="btn">Explore Selected Work &rarr;</a>
+                <!-- Desktop CTA Button -->
+                <div class="hidden md:block">
+                    <button onclick="navigateTo('contact')" class="bg-primary hover:bg-blue-700 text-white text-xs font-semibold uppercase tracking-widest px-6 py-3 rounded-none shadow-md transition-all duration-300 transform hover:-translate-y-0.5">
+                        Plan A Visit
+                    </button>
+                </div>
+
+                <!-- Hamburger Mobile Menu Trigger -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-primary focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="hero-box">
-          <span style="font-family:var(--mono); font-size:0.75rem;">FIG. 01 &mdash; PORTRAIT</span>
-          <div style="font-family:var(--serif); font-style:italic; font-size:1.2rem;">[Replace with Personal Photo]</div>
-          <span style="font-family:var(--mono); font-size:0.75rem;">CLASS OF 2026</span>
+
+        <!-- Responsive Mobile Dropdown Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute left-0 right-0 shadow-lg transition-all duration-300 max-h-screen overflow-y-auto">
+            <div class="px-4 pt-4 pb-6 space-y-3 font-medium tracking-wide uppercase text-sm">
+                <button onclick="navigateTo('home')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-primary bg-blue-50/50">Home</button>
+                <button onclick="navigateTo('about')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-slate-600 hover:bg-slate-50">About Us</button>
+                <button onclick="navigateTo('ministries')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-slate-600 hover:bg-slate-50">Ministries</button>
+                <button onclick="navigateTo('sermons')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-slate-600 hover:bg-slate-50">Sermons</button>
+                <button onclick="navigateTo('events')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-slate-600 hover:bg-slate-50">Events</button>
+                <button onclick="navigateTo('contact')" class="mobile-nav-link block w-full text-left py-2.5 px-3 rounded text-slate-600 hover:bg-slate-50">Contact</button>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="navigateTo('contact')" class="w-full text-center bg-primary text-white py-3 font-semibold text-xs tracking-widest uppercase">
+                        Plan A Visit
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
+    </nav>
 
-    <section id="about">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>About Me</h2>
-          <span class="eyebrow">01 / Profile</span>
-        </div>
-        <div class="about-grid">
-          <div class="photo-box">[Campus &amp; Studio Photo Placeholder]</div>
-          “Great software should feel like a well-typeset book—clear, calm, and deeply respectful of the reader’s attention.”
-I am a Human-Centered Design and Engineering graduate passionate about bridging qualitative user research with clean front-end development. Over the past three years, I have led student design teams, built accessible civic prototypes, and explored how editorial typography brings clarity to everyday software.
+    <!-- ================= MAIN PLATFORM WRAPPER ================= -->
+    <main class="flex-grow pt-20">
 
+        <!-- ================= PAGE 1: HOME PAGE ================= -->
+        <section id="page-home" class="page-section active-page">
+            <!-- Full-Screen Hero Layout -->
+            <div class="relative h-[90vh] md:h-screen w-full flex items-center justify-center bg-slate-900 overflow-hidden">
+                <img src="https://picsum.photos" class="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-multiply" alt="Sanctuary Sanctuary Architecture">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/40 to-slate-950/80"></div>
+                <div class="relative max-w-5xl mx-auto px-4 text-center z-10 text-white flex flex-col items-center">
+                    <span class="text-luxuryGold font-medium tracking-widest text-xs md:text-sm uppercase mb-4 tracking-[0.3em] animated-element opacity-0 translate-y-4 transition-all duration-700">Welcome To Glory</span>
+                    <h1 class="font-luxury-title text-4xl md:text-7xl font-bold tracking-tight leading-tight max-w-4xl mb-6 animated-element opacity-0 translate-y-4 transition-all duration-700 delay-200">
+                        Experience Divine Transformation
+                    </h1>
+                    <div class="w-20 h-[2px] bg-luxuryGold my-2 animated-element opacity-0 transition-all duration-700 delay-300"></div>
+                    <p class="italic font-serif text-slate-200 text-sm md:text-lg max-w-2xl mt-4 mb-8 tracking-wide font-light leading-relaxed animated-element opacity-0 translate-y-4 transition-all duration-700 delay-400">
+                        "1st Samuel 7:12... he named it EBENEZER saying 'Thus far the Lord has helped us'"
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animated-element opacity-0 translate-y-4 transition-all duration-700 delay-500 w-full sm:w-auto">
+                        <button onclick="navigateTo('sermons')" class="bg-primary hover:bg-blue-700 text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 shadow-lg transition-all duration-300">
+                            Watch Latest Sermons
+                        </button>
+                        <button onclick="navigateTo('ministries')" class="bg-transparent hover:bg-white hover:text-luxuryDark text-white border border-white/60 font-semibold text-xs uppercase tracking-widest px-8 py-4 transition-all duration-300">
+                            Explore Ministries
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Welcome Callout Statement -->
+            <div class="py-20 bg-slate-50 border-b border-slate-100">
+                <div class="max-w-4xl mx-auto px-4 text-center reveal">
+                    <i class="fa-solid fa-quote-left text-primary/20 text-5xl mb-4 block"></i>
+                    <h2 class="font-luxury-title text-2xl md:text-4xl text-luxuryDark font-medium leading-relaxed">
+                      We are a vibrant faith community anchored in Christ, celebrating the profound journey of grace, truth, and spiritual empowerment.
 
-Skills & Tools
-02 / Competencies
 
+Whether you are beginning your spiritual inquiry or looking for a deeper connection with God, there is a dedicated space waiting for you here at Ebenezer.
 
 
-Design & Research
-UI & Editorial Layout95%
-User Research90%
-Prototyping88%
 
 
-Front-End Code
-HTML5 & CSS Grid94%
-JavaScript (ES6+)82%
-React & Next.js80%
+Our Core History
+Learn about the strategic baseline, principles, and visionary pastoral direction guiding Ebenezer Church.
+Read Chronicle →
 
 
-Toolkit
+Four Strategic Pillars
+Explore our active operative departments: Asaph, ELA, Rattles of Shiloh, and Rebecca Ministries.
+Explore Groups →
 
-Figma
-Git & GitHub
-InDesign
-Tailwind CSS
-D3.js
-Notion
-Webflow
-WCAG 2.2
 
+Community Timeline
+Plan ahead for physical assembly programs, local outreach calendars, and global conferences.
+View Events →
 
 
 
-Selected Work
-03 / Projects
+About Our House
+Our Foundation, Leadership, and Destiny
 
+Our Historic Origin
+"Thus Far The Lord Has Helped Us"
 
+Ebenezer Church Of Glory was founded upon the unshakeable premise found in 1st Samuel 7:12. Like the stone set up by Samuel to commemorate God's protective intervention, our sanctuary serves as a monument of divine faithfulness.
 
-[PROJECT 01 THUMBNAIL]
 
-Civic Tech • 2026
-TransitPulse Seattle
-A real-time accessibility companion for light-rail commuters featuring live elevator status alerts and simplified route cards.
-View Case Study →
+Over the decades, our communion has transformed from a small prayer meeting into a multi-generational spiritual center. We emphasize continuous biblical literacy, robust theological exploration, and genuine loving-kindness.
 
 
+"We do not build for architectural vanity, but to create portals where broken lives intersect with perfect grace."
 
-[PROJECT 02 THUMBNAIL]
 
-Data Journalism • 2025
-Urban Canopy Atlas
-An interactive scrollytelling essay mapping neighborhood tree cover against summer temperatures using open municipal datasets.
-View Live Demo →
 
 
 
-[PROJECT 03 THUMBNAIL]
+25+
+Years of Grace & Service
 
-Editorial Web App • 2025
-FolioNote Academic Reader
-A distraction-free PDF annotation workspace built for university researchers, turning margin highlights into structured outlines.
-Explore Code →
 
+Radical Love
+Embracing each individual precisely as they are, modeling Christ's absolute blueprint of redemption.
 
 
-[PROJECT 04 THUMBNAIL]
+Scriptural Truth
+Upholding timeless scriptural principles with uncompromised accuracy, absolute clarity, and conviction.
 
-Product Design • 2024
-HarvestShare Campus Pantry
-A mobile reservation flow reducing campus dining hall food waste by alerting students to surplus meals within walking distance.
-Read Process →
 
+True Fellowship
+Cultivating micro-groups where accountability, transparent sharing, and genuine support flourish.
 
 
+Stewardship
+Leveraging our strategic financial resources, specialized talents, and time to dynamically heal our city.
 
-Education
-04 / Credentials
 
 
-2022 — 2026
+Pillars of Glory & Service
+Strategic execution fields within our Sanctuary operational matrices
 
-B.S. in Human-Centered Design & Engineering
-University of Washington • Dean’s List • Coursework in Interactive Systems, Data Visualization, and Web Technologies.
+ Sanctuary Worship & Liturgical Expressions
 
+Musical Architecture
+Asaph Ministry
 
+In charge of the complete musical architecture and corporate worship encounters. Asaph designs strategic environments that point our congregation directly to the presence of God.
 
-Summer 2025
 
-Product Design Intern — Northwind Civic Lab
-Redesigned multi-language housing assistance forms in collaboration with engineers, reducing completion time by 28%.
+Join Asaph Choir
 
 
+Prophetic Dance Movements
+Rattles of Shiloh
 
-2024
+Our premier dance expression ministry dedicated to prophetic visual praise. Rattles of Shiloh serves to translate deep scriptural movements during holy convocations and seasonal milestones.
 
-W3C Web Accessibility Foundations Certificate
-Completed intensive training in screen-reader testing, keyboard navigation, and WCAG 2.2 AA standards.
 
+Join Shiloh Team
 
 
 
-Let’s Connect
-05 / Contact
 
+ Evangelical Impact & House Hospitality
 
+Door-to-Door Commission
+ELA Ministry
 
-Open to full-time roles, internships, and creative collaborations.
-maya.lin.design@example.edu
+Spearheading our strategic door-to-door evangelism campaigns. ELA is the front-line tactical evangelical engine, bringing raw hope, foundational scripture study, and love to surrounding families.
 
-LinkedIn
-GitHub
-Dribbble
 
+Enlist In Outreach
 
 
+Sanctuary Honor & Care Systems
+Rebecca Ministry
 
+Tasked with welcoming visitors, overseeing critical church washing procedures, and maintaining the clean sanctuary. Rebecca preserves excellent service and comfort throughout the house.
 
 
-Send Message →
-Message sent! Thank you for reaching out.
+Volunteer Protocol Sign-up
 
 
-© 2026 Alvin Muturi. Built with semantic HTML & CSS Grid.
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-e.preventDefault();
-document.getElementById('msgStatus').style.display = 'block';
-this.reset();
+
+The Spoken Word
+Stream and study our comprehensive theological catalog
+
+
+
+
+Latest Release
+
+
+Series: Walking in Sovereignty
+Establishing The Ebenezer Altars
+
+In this seminal message, discover how identifying God's structural markers in your past shifts the momentum of your future breakthroughs. Unpack historical validation maps securely.
+
+
+Nov 1, 2026
+Pastor Marcus Vance
+
+
+Recent Archive Releases
+
+
+
+Grace Foundations
+The Audacity of Mercy
+Unpacking the radical elements of the Prodigal Son's restoration sequence.
+
+
+Oct 25, 2026
+
+
+
+
+
+Prophetic Edge
+Strategic Silence In Warfare
+Analyzing Joshua’s structured silent perimeter marches surrounding Jericho’s walls.
+
+
+Oct 18, 2026
+
+
+
+
+
+Kingdom Stewardship
+Wealth, Wisdom, & Worship
+How authentic biblical financial principles unlock structural community liberation plans.
+
+
+Oct 11, 2026
+
+
+
+
+
+
+
+
+Community Gatherings
+Chronological listing of fellowships, assemblies, and conferences
+
+14
+Nov
+
+
+Empowerment Session
+Annual Men Of Valor Symposium
+
+A structured strategic gathering tailored to equip modern men with leadership values, authentic discipleship frameworks, and robust family stewardship strategies.
+
+
+
+
+09:00 AM - 03:00 PM
+
+Secure Seat
+
+
+26
+Nov
+
+
+Community Benevolence Drive
+Thanksgiving Banquet Outreach
+
+Serving warm catered meals, essential grocery parcels, and sharing love with underserved families across downtown regions. Volunteers assemble early.
+
+
+
+
+11:30 AM - 04:00 PM
+
+Volunteer
+
+
+
+
+
+Connect With Us
+Reach out for prayers, counseling, or structural geographical data
+
+Send Secure Message
+Our administrative leadership review incoming communiques daily.
+Full Name
+Email Address
+Phone Number
+Purpose of Contact
+General Inquiries / Info Request
+Prayer Request Confirmation
+Pastoral Counseling Appointment
+Volunteer Placement Assignment
+
+
+Your Detailed Message
+Dispatch Message 
+
+
+Sanctuary Matrix Data
+
+
+
+Headquarters Address:
+777 Glory Pavilion Boulevard, Suite 100,
+Metropolis Area, NY 10001
+
+
+
+Central Office Link: +1 (800) 555-GLORY
+
+
+
+Administrative Mail: contact@ebenezerglory.org
+
+
+ EBENEZER
+
+
+"1st Samuel 7:12... he named it EBENEZER saying 'Thus far the Lord has helped us'". Dedicating our collective efforts to structural community transformation.
+
+
+
+
+
+Quick Navigation
+
+Home Dashboard
+Our History & Beliefs
+Pillar Departments
+Sermon Media Archives
+Upcoming Gatherings
+
+Weekly Assemblies
+
+Sunday Service: 08:00 AM & 11:00 AM
+Wednesday Midweek: 07:00 PM (Online Matrix)
+Friday Intercession: 06:00 PM (Altar Sanctuary)
+
+Stay Connected
+Subscribe to receive devotionals, bulletins, and seasonal event alerts directly.
+
+
+
+Subscribe
+
+
+
+© 2026 Ebenezer Church Of Glory. All Sovereign Rights Reserved.
+
+Privacy Policy
+Terms of Use
+
+
+
+
+// --- 1. CORE SPA ROUTING CONTROLLER ---
+function navigateTo(pageId) {
+const targets = document.querySelectorAll('.page-section');
+targets.forEach(section => {
+if(section.id === page-${pageId}) {
+section.classList.add('active-page');
+} else {
+section.classList.remove('active-page');
+}
+});
+// Smooth window resets
+window.scrollTo({ top: 0, behavior: 'smooth' });
+// Close Mobile Hamburger Drawer automatically
+document.getElementById('mobile-menu').classList.add('hidden');
+// Sync menu highlighting configurations
+updateNavigationHighlights(pageId);
+// Re-trigger scroll display checks
+setTimeout(revealElementsOnScroll, 100);
+}
+function updateNavigationHighlights(activePage) {
+const indexMap = { 'home': 0, 'about': 1, 'ministries': 2, 'sermons': 3, 'events': 4, 'contact': 5 };
+const activeIndex = indexMap[activePage];
+// Desktop Updates
+const desktopLinks = document.querySelectorAll('.nav-link');
+desktopLinks.forEach((link, idx) => {
+if(idx === activeIndex) {
+link.classList.remove('text-slate-600');
+link.classList.add('text-primary');
+} else {
+link.classList.remove('text-primary');
+link.classList.add('text-slate-600');
+}
+});
+// Mobile Updates
+const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+mobileLinks.forEach((link, idx) => {
+if(idx === activeIndex) {
+link.classList.remove('text-slate-600', 'hover:bg-slate-50');
+link.classList.add('text-primary', 'bg-blue-50/50');
+} else {
+link.classList.remove('text-primary', 'bg-blue-50/50');
+link.classList.add('text-slate-600', 'hover:bg-slate-50');
+}
+});
+}
+// --- 2. RESPONSIVE MOBILE MENU INTERACTION ---
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenuContainer = document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click', () => {
+mobileMenuContainer.classList.toggle('hidden');
+});
+// --- 3. FORM VALIDATION PIPELINES ---
+function handleContactSubmit(event) {
+event.preventDefault();
+const name = document.getElementById('contact-name').value.trim();
+const email = document.getElementById('contact-email').value.trim();
+const message = document.getElementById('contact-message').value.trim();
+if(!name || !email || !message) {
+alert("Please complete all mandatory secure fields.");
+return;
+}
+alert(Thank you, ${name}! Your transmission record has reached Ebenezer operational administration.);
+document.getElementById('church-contact-form').reset();
+}
+function handleNewsletterSubmit(event) {
+event.preventDefault();
+const emailInput = document.getElementById('newsletter-email');
+if(!emailInput.value) {
+alert("Please input a valid configuration email asset.");
+return;
+}
+alert(Success! Email registration verified. Welcome to our notifications matrix.);
+emailInput.value = '';
+}
+// --- 4. SCROLL INTERACTIVES: REVEAL ELEMENTS & BACK TO TOP BUTTON ---
+const backToTopBtn = document.getElementById('back-to-top-btn');
+backToTopBtn.addEventListener('click', () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+function revealElementsOnScroll() {
+const reveals = document.querySelectorAll('.reveal');
+const windowHeight = window.innerHeight;
+const revealPoint = 80;
+reveals.forEach(element => {
+const elementTop = element.getBoundingClientRect().top;
+if(elementTop < windowHeight - revealPoint) {
+element.classList.add('active');
+}
+});
+// Sticky Back-to-Top display control logic
+if (window.scrollY > 400) {
+backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+} else {
+backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+}
+}
+window.addEventListener('scroll', revealElementsOnScroll);
+// --- 5. RUN INITIAL ENGINE PROCESSES ---
+window.addEventListener('DOMContentLoaded', () => {
+const heroElements = document.querySelectorAll('.animated-element');
+heroElements.forEach(el => {
+el.classList.remove('opacity-0', 'translate-y-4');
+el.classList.add('opacity-100', 'translate-y-0');
+});
+revealElementsOnScroll();
 });
 
-
-
-<FollowUp>
-Once this clean `index.html` is committed and the **Actions** tab shows a green checkmark, refresh the live link and let me know what you would like to customize first (**name, tagline, projects, or colors**).
-</FollowUp>
-          <div>
